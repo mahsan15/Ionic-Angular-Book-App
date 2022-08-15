@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Search Books
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged()" 
+  placeholder="Search for a book"></ion-searchbar>
+  <ion-list>
+<ion-item  *ngFor="let item of searchResults" >
+  <img [src] = "item.imgUrl" height="60">
+  <ion-label style="font-size: 15px;" >{{item.title}}</ion-label>
+  <ion-label style="font-size: 10px;" >{{item.release}}</ion-label>
+  <ion-label style="font-size: 10px;" >{{item.author}}</ion-label>
+  <ion-button (click)="addToReadingList(item)"><ion-icon name="book"></ion-icon></ion-button>
+  <ion-button (click)="gotToDetails(item.key)"><ion-icon name="arrow-forward"></ion-icon></ion-button>
+</ion-item>
+</ion-list>
+</ion-content>

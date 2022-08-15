@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Book detail</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+<ion-back-button class="back-button" defaultHref="tab2">Go Back</ion-back-button>
+<ion-content>
+ 
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          {{bookInfos.title}}
+        </ion-card-title>
+        <ion-card-subtitle>
+          <br>
+          Release: {{bookInfos.release}}<br><br>
+          Author(s): {{bookInfos.author}}
+        </ion-card-subtitle>
+        <br>
+      </ion-card-header>
+      <ion-card-content>
+        <img [src]="bookInfos.imgUrl" class="main-image" alt="">
+        <br>
+        <ion-button (click)="addToReadingList(bookInfos)"><ion-icon name="book"></ion-icon></ion-button>
+        <ion-button *ngIf="bookInfos.amazonLink != ''" href="{{bookInfos.amazonLink}}"><ion-icon  name="cart-outline"></ion-icon></ion-button>
+        <br>
+        <br>
+        <ion-card-subtitle class="subj">
+          {{bookInfos.subject}}
+        </ion-card-subtitle>
+      </ion-card-content>
+
+      <ion-label *ngIf="bookInfos.rate != 0">Personal Rating: {{bookInfos.rate}}</ion-label>
+      <br>
+      <ion-label *ngIf="bookInfos.comment != ''">Personal Comments: {{bookInfos.comment}}</ion-label>
+      
+      <ion-button (click)="addToReadingList(bookInfos)"><ion-icon name="book"></ion-icon></ion-button>
+        </ion-card>
+
+</ion-content>
